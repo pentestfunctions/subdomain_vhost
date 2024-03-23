@@ -2,6 +2,11 @@
 
 This tool is designed to streamline the process of discovering subdomains and virtual hosts, making it easier for penetration testers and security researchers to uncover potential entry points in a target's web infrastructure. Utilizing `ffuf`, `zenity`, and the `seclists` wordlist, this bash script provides a user-friendly interface and powerful scanning capabilities.
 
+
+## Overview 💻
+
+Essentially it runs ffuf for subdomains for 5 seconds, checks their wordcount/size response etc - then based on duplicates it will rerun ffuf with those filters in place to get rid of the junk responses.
+
 ## Prerequisites 📋
 
 Before you start, make sure you have the following dependencies installed on your system:
