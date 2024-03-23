@@ -19,7 +19,7 @@ temp_output=$(mktemp)
 
 # Run ffuf for a short duration to gather initial data
 echo "Running: timeout 5s ffuf -H \"Host: FUZZ.$target\" -H \"User-Agent: test-agent\" -c -w \"/usr/share/seclists/Discovery/Web-Content/combined_directories.txt\" -u \"http://$target\""
-timeout --foreground 5s ffuf -H "Host: FUZZ.$target" -H "User-Agent: test-agent" -c -w "/usr/share/seclists/Discovery/DNS/subdomains-top1million-20000.txt" -u "http://$target" > $temp_output 2>&1
+timeout --foreground 5s ffuf -H "Host: FUZZ.$target" -H "User-Agent: test-agent" -c -w "/usr/share/seclists/Discovery/DNS/subdomains-top1million-110000.txt" -u "http://$target" > $temp_output 2>&1
 
 echo "First Iteration done... Analyzing for filters"
 
@@ -52,7 +52,7 @@ filters=""
 # Re-run ffuf with filters, if any
 if [ -n "$filters" ]; then
     echo "Re-running ffuf with added filters: $filters"
-    ffuf -H "Host: FUZZ.$target" -H "User-Agent: test-agent" -c -w "/usr/share/seclists/Discovery/DNS/subdomains-top1million-20000.txt" -u "http://$target" $filters
+    ffuf -H "Host: FUZZ.$target" -H "User-Agent: test-agent" -c -w "/usr/share/seclists/Discovery/DNS/subdomains-top1million-110000.txt" -u "http://$target" $filters
 else
     echo "No significant patterns found to apply filters."
 fi
